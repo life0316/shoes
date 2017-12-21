@@ -1,10 +1,11 @@
-package com.haoxi.shoes;
+package com.haoxi.shoes.act;
 
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.haoxi.shoes.R;
 import com.haoxi.shoes.utils.ApiUtils;
 
 public class SplashActivity extends AppCompatActivity {

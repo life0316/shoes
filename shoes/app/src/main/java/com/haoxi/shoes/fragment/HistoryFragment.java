@@ -2,47 +2,48 @@ package com.haoxi.shoes.fragment;
 
 import android.content.Context;
 import android.location.Location;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.haoxi.shoes.R;
+import com.haoxi.shoes.base.BaseLazyFragment;
 import com.tencent.map.geolocation.TencentLocation;
 import com.tencent.map.geolocation.TencentLocationListener;
 import com.tencent.map.geolocation.TencentLocationManager;
 import com.tencent.map.geolocation.TencentLocationRequest;
 import com.tencent.tencentmap.mapsdk.maps.LocationSource;
 import com.tencent.tencentmap.mapsdk.maps.MapView;
-import com.tencent.tencentmap.mapsdk.maps.SupportMapFragment;
 import com.tencent.tencentmap.mapsdk.maps.TencentMap;
 import com.tencent.tencentmap.mapsdk.maps.UiSettings;
 
-
-public class HistoryFragment extends Fragment {
+public class HistoryFragment extends BaseLazyFragment {
 
     private MapView mMapView;
     private TencentMap tencentMap;
     private UiSettings uiSettings;
     private DemoLocationSource locationSource;
+    // 标志位，标志已经初始化完成。
+    private boolean isPrepared;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
 
-        View view  = inflater.inflate(R.layout.fragment_history,container, false);
-        mMapView = view.findViewById(R.id.map);
-//        mMapView = new MapView(getActivity().getBaseContext());
+        Log.e("jiazai","预加载----HistoryFragment");
+        View view = inflater.inflate(R.layout.fragment_history, container, false);
+        isPrepared = true;
+        lazyLoad();
         return view;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        mMapView = view.findViewById(R.id.map);
         mMapView.setOnTop(false);
         tencentMap = mMapView.getMap();
         initMap();
@@ -75,7 +76,6 @@ public class HistoryFragment extends Fragment {
     public void onPause() {
         mMapView.onPause();
         super.onPause();
-
     }
 
     @Override
@@ -95,6 +95,16 @@ public class HistoryFragment extends Fragment {
         mMapView.onDestroy();
         super.onDestroyView();
     }
+
+    @Override
+    protected void lazyLoad() {
+        if(!isPrepared || !isVisible) {
+            return;
+        }
+        //填充各控件的数据
+        Log.e("jiazai","预加载----HistoryFragment-------1");
+    }
+
     class DemoLocationSource implements LocationSource, TencentLocationListener {
 
         private Context mContext;
@@ -108,7 +118,6 @@ public class HistoryFragment extends Fragment {
             locationManager = TencentLocationManager.getInstance(mContext);
             locationRequest = TencentLocationRequest.create();
             locationRequest.setInterval(1000 * 60 * 24 * 60);
-
         }
 
         @Override
@@ -128,7 +137,6 @@ public class HistoryFragment extends Fragment {
         @Override
         public void onStatusUpdate(String arg0, int arg1, String arg2) {
             // TODO Auto-generated method stub
-
         }
 
         @Override

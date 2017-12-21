@@ -33,12 +33,6 @@ public class UltraPagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-//        View linearLayout = LayoutInflater.from(container.getContext()).inflate(R.layout.layout_ultra, null);
-//
-//        ImageView ultraIv = linearLayout.findViewById(R.id.ultra_iv);
-//        ultraIv.setImageResource(imageLists.get(position));
-//        Log.e("fafsa",imageLists.get(position)+"----"+position);
-
         container.addView(imageLists.get(position));
         return imageLists.get(position);
     }

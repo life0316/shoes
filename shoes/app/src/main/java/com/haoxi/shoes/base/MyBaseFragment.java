@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 
 import com.haoxi.shoes.R;
+import com.haoxi.shoes.utils.DepthPageTransformer;
 import com.haoxi.shoes.widget.CustomViewPager;
 
 public abstract class MyBaseFragment extends Fragment {
@@ -16,7 +17,6 @@ public abstract class MyBaseFragment extends Fragment {
     protected MyBaseAdapter adapter;
     TabLayout mTablayout;
     CustomViewPager mViewPager;
-
 
     protected Bundle getBundle(String arg) {
         Bundle bundle = new Bundle();
@@ -38,7 +38,8 @@ public abstract class MyBaseFragment extends Fragment {
         mViewPager = view.findViewById(R.id.fragment_base_cvp);
 
         isPaging(true);
-        mViewPager.setOffscreenPageLimit(2);
+        mViewPager.setOffscreenPageLimit(3);
+        //mViewPager.setPageTransformer(true, new DepthPageTransformer());
         adapter = new MyBaseAdapter(getChildFragmentManager(), mViewPager, mTablayout, getActivity());
         mTablayout.setupWithViewPager(mViewPager);
         adapter.clearFragment();
@@ -48,6 +49,5 @@ public abstract class MyBaseFragment extends Fragment {
     protected void isPaging(boolean ispag) {
         mViewPager.setPagingEnabled(ispag);
     }
-//    protected abstract void initToolbar(View view);
     public abstract void setupAdapter(MyBaseAdapter adapter);
 }

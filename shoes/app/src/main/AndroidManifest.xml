@@ -48,16 +48,16 @@
             android:name="TencentMapSDK"
             android:value="7NBBZ-K7WWO-N7CW2-SBEQ5-WFB2F-EQFGT"/>
 
-        <activity android:name=".SplashActivity">
+        <activity android:name=".act.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".TrackActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".LoginActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".act.MainActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".act.TrackActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".act.LoginActivity" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
