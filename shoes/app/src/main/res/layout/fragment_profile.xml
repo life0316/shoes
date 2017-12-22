@@ -11,7 +11,7 @@
         android:orientation="vertical">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/fragment_home_civ_icon"
+            android:id="@+id/profile_civ"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"
@@ -20,7 +20,7 @@
             app:civ_border_color="#000000"
             app:civ_border_width="0dp" />
         <TextView
-            android:id="@+id/fragment_home_username"
+            android:id="@+id/profile_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/civ_icon"
@@ -36,42 +36,42 @@
         android:layout_height="1dp"
         android:background="@color/view_line"/>
     <TextView
-        android:id="@+id/fragment_home_route"
+        android:id="@+id/profile_affection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffffff"
         android:drawableRight="@mipmap/ic_black"
         android:gravity="center_vertical"
         android:padding="10dp"
-        android:text="亲情监护"
+        android:text="@string/family_affection"
         android:textSize="18dp" />
     <View
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:background="@color/view_line"/>
     <TextView
-        android:id="@+id/fragment_home_mypigeons"
+        android:id="@+id/profile_upgrade"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffffff"
         android:drawableRight="@mipmap/ic_black"
         android:gravity="center_vertical"
         android:padding="10dp"
-        android:text="固件升级"
+        android:text="@string/upgrade"
         android:textSize="18sp" />
     <View
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:background="@color/view_line"></View>
     <TextView
-        android:id="@+id/fragment_home_ring"
+        android:id="@+id/profile_lose"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ffffffff"
         android:drawableRight="@mipmap/ic_black"
         android:gravity="center_vertical"
         android:padding="10dp"
-        android:text="手机防丢"
+        android:text="@string/prevent_loss"
         android:textSize="18sp"/>
     <View
         android:layout_width="match_parent"

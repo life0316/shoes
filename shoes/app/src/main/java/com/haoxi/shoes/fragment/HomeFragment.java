@@ -1,5 +1,6 @@
 package com.haoxi.shoes.fragment;
 
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,22 +13,37 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.blankj.utilcode.util.AppUtils;
+import com.blankj.utilcode.util.ImageUtils;
+import com.blankj.utilcode.util.SPUtils;
+import com.blankj.utilcode.util.Utils;
 import com.haoxi.shoes.R;
 import com.haoxi.shoes.adapter.UltraPagerAdapter;
 import com.haoxi.shoes.base.BaseLazyFragment;
+import com.haoxi.shoes.bean.HistoryBean;
+import com.haoxi.shoes.widget.TenHistroyView;
 import com.tmall.ultraviewpager.UltraViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class HomeFragment extends BaseLazyFragment {
     // 标志位，标志已经初始化完成。
     private boolean isPrepared;
+    private List<HistoryBean> eachList = new ArrayList<>();
+
+    @BindView(R.id.tenview)
+    TenHistroyView histroyView;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         Log.e("jiazai","预加载----HomeFragment");
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        ButterKnife.bind(this,view);
         isPrepared = true;
         lazyLoad();
         return view;
@@ -39,6 +55,23 @@ public class HomeFragment extends BaseLazyFragment {
         initUltra(view);
     }
 
+    @OnClick(R.id.add_goal)
+    void addGoal(){
+
+        eachList.add(new HistoryBean(300,"1日"));
+        eachList.add(new HistoryBean(500,"2日"));
+        eachList.add(new HistoryBean(600,"3日"));
+        eachList.add(new HistoryBean(200,"4日"));
+        eachList.add(new HistoryBean(900,"5日"));
+        eachList.add(new HistoryBean(200,"6日"));
+        eachList.add(new HistoryBean(100,"7日"));
+        eachList.add(new HistoryBean(1000,"8日"));
+        eachList.add(new HistoryBean(400,"9日"));
+        eachList.add(new HistoryBean(600,"10日"));
+
+        histroyView.setEachList(eachList);
+    }
+
     @Override
     protected void lazyLoad() {
         if(!isPrepared || !isVisible) {
@@ -46,6 +79,8 @@ public class HomeFragment extends BaseLazyFragment {
         }
         //填充各控件的数据
         Log.e("jiazai","预加载----HomeFragment-------1");
+        Log.e("jiazai","预加载----HomeFragment--------------"+AppUtils.getAppPath());
+
     }
 
     private void initUltra(View view) {
@@ -62,7 +97,10 @@ public class HomeFragment extends BaseLazyFragment {
        List<ImageView> images = new ArrayList();
         for(int i = 0; i < imageLists.size(); i++){
             ImageView imageView = new ImageView(getActivity());
-            imageView.setBackgroundResource(imageLists.get(i));
+            Bitmap bitmap = ImageUtils.getBitmap(imageLists.get(i));
+            //Bitmap bitmap1 = ImageUtils.addTextWatermark(bitmap,"飞哥",13,getResources().getColor(R.color.colorAccent),0,0);
+            imageView.setImageBitmap(bitmap);
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             images.add(imageView);
         }
 

@@ -49,14 +49,6 @@ public class TrackActivity extends AppCompatActivity {
             }
         });
 
-    //单选回调
-//        calendarView.setOnItemClickListener(new OnMonthItemClickListener() {
-//            @Override
-//            public void onMonthItemClick(View view, DateBean date) {
-//
-//            }
-//        });
-
         calendarView.setOnSingleChooseListener(new OnSingleChooseListener() {
             @Override
             public void onSingleChoose(View view, DateBean dateBean) {

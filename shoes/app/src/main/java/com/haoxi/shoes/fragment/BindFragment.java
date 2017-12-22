@@ -1,5 +1,6 @@
 package com.haoxi.shoes.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -10,15 +11,28 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.haoxi.shoes.R;
+import com.haoxi.shoes.act.EditShoesActivity;
 import com.haoxi.shoes.base.BaseLazyFragment;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class BindFragment extends BaseLazyFragment implements View.OnClickListener {
 
-    private LinearLayout addDeviceLl;
-    private LinearLayout shoesShowLl;
-    private Button addDeviceBtn;
-    private Button shoesEditBtn;
-    private Button shoesDelectBtn;
+    @BindView(R.id.add_device)
+    LinearLayout addDeviceLl;
+
+    @BindView(R.id.shoes_show)
+    LinearLayout shoesShowLl;
+
+    @BindView(R.id.add_device_btn)
+    Button addDeviceBtn;
+
+    @BindView(R.id.shoes_edit_btn)
+    Button shoesEditBtn;
+
+    @BindView(R.id.shoes_delect_btn)
+    Button shoesDelectBtn;
 
     private boolean isShow = true;
     // 标志位，标志已经初始化完成。
@@ -30,6 +44,7 @@ public class BindFragment extends BaseLazyFragment implements View.OnClickListen
 
         Log.e("jiazai","预加载----BindFragment");
         View view = inflater.inflate(R.layout.fragment_bind, container, false);
+        ButterKnife.bind(this,view);
         //XXX初始化view的各控件
         isPrepared = true;
         lazyLoad();
@@ -40,11 +55,6 @@ public class BindFragment extends BaseLazyFragment implements View.OnClickListen
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        addDeviceLl = view.findViewById(R.id.add_device);
-        shoesShowLl = view.findViewById(R.id.shoes_show);
-        shoesEditBtn = view.findViewById(R.id.shoes_edit_btn);
-        addDeviceBtn = view.findViewById(R.id.add_device_btn);
-        shoesDelectBtn = view.findViewById(R.id.shoes_delect_btn);
         addDeviceBtn.setOnClickListener(this);
         shoesEditBtn.setOnClickListener(this);
         shoesDelectBtn.setOnClickListener(this);
@@ -63,9 +73,12 @@ public class BindFragment extends BaseLazyFragment implements View.OnClickListen
         switch (view.getId()){
             case R.id.add_device_btn:
                 addDeviceLl.setVisibility(View.GONE);
+
                 shoesShowLl.setVisibility(View.VISIBLE);
                 break;
             case R.id.shoes_edit_btn:
+                Intent intent = new Intent(getActivity(), EditShoesActivity.class);
+                startActivity(intent);
                 break;
             case R.id.shoes_delect_btn:
                 break;

@@ -37,6 +37,7 @@
 
 
     <application
+        android:name=".base.ShoesApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -58,6 +59,11 @@
         <activity android:name=".act.MainActivity" android:screenOrientation="portrait"/>
         <activity android:name=".act.TrackActivity" android:screenOrientation="portrait"/>
         <activity android:name=".act.LoginActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".act.AffectActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".act.UpgradeActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".act.PreventActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".act.PersonDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".act.EditShoesActivity" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

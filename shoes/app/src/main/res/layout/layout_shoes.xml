@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="您绑定的定位鞋"
+        android:text="@string/your_shoes"
         android:textSize="18sp"
         />
 
@@ -35,7 +35,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="添加设备"
+                android:text="@string/shoes_name"
                 android:textColor="@color/colorRed"
                 android:textSize="12sp"
                 />
@@ -51,7 +51,7 @@
                 android:layout_marginTop="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="设备编码"
+                android:text="@string/shoes_imei"
                 android:textColor="@color/colorRed"
                 android:textSize="12sp"
                 />
@@ -78,7 +78,7 @@
             android:layout_weight="1"
             android:layout_marginTop="10dp"
             android:background="@drawable/btn_vode_bg"
-            android:text="编辑"
+            android:text="@string/edit_shoes"
             android:textColor="#fff"
             android:textSize="14sp"
             android:layout_marginRight="20dp"
@@ -91,11 +91,9 @@
             android:layout_weight="1"
             android:layout_marginTop="10dp"
             android:background="@drawable/btn_vode_dray_bg"
-            android:text="删除"
+            android:text="@string/delete"
             android:textColor="#fff"
             android:layout_marginLeft="20dp"
             android:textSize="14sp" />
-
     </LinearLayout>
-
 </LinearLayout>

@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="13"
     >
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5"
-        android:background="@color/colorRed"
-        ></LinearLayout>
+        >
+        <include layout="@layout/home_up"/>
+    </LinearLayout>
 
     <com.tmall.ultraviewpager.UltraViewPager
         android:id="@+id/home_ultra"
@@ -25,7 +26,32 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5"
-        android:background="@color/colorAccent"
-        ></LinearLayout>
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/record"
+            android:gravity="center_vertical"
+            android:padding="10dp"
+            android:textSize="18sp"
+            />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorRed"/>
+
+        <com.haoxi.shoes.widget.TenHistroyView
+            android:id="@+id/tenview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:titleText="3712"
+            android:padding="10dp"
+            app:titleTextColor="#ff0000"
+            android:layout_centerInParent="true"
+            app:titleTextSize="12sp"
+            />
+
+    </LinearLayout>
 </LinearLayout>

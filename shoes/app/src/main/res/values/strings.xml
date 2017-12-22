@@ -1,9 +1,33 @@
 <resources>
     <string name="app_name">定位鞋</string>
 
-
     <string name="home_name">首页</string>
     <string name="history_name">历史</string>
     <string name="bind_name">绑定</string>
     <string name="profile_name">我的</string>
+
+    <string name="person_detail">个人详情</string>
+    <string name="edit_shoes">编辑</string>
+    <string name="family_affection">亲情监护</string>
+    <string name="upgrade">固件升级</string>
+    <string name="prevent_loss">手机防丢</string>
+    <string name="history_trail">轨迹回放</string>
+
+    <string name="target_step">目标步数</string>
+    <string name="step">步</string>
+    <string name="quantity_of_heat">热量</string>
+    <string name="distance">距离</string>
+    <string name="power">设备电量</string>
+    <string name="record">数据记录</string>
+
+    
+    
+    <string name="delete">删除</string>
+    <string name="your_shoes">您绑定的定位鞋</string>
+    <string name="shoes_name">设备名称</string>
+    <string name="input_your_shoes">您请输入设备名称</string>
+    <string name="shoes_imei">设备编号</string>
+    <string name="input_shoes_imei">请输入设备IMEI ( 15位 )</string>
+    <string name="add_shoes">添加设备</string>
+
 </resources>
