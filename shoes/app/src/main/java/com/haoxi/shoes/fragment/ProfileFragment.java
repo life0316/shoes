@@ -12,10 +12,13 @@ import android.widget.TextView;
 
 import com.haoxi.shoes.R;
 import com.haoxi.shoes.act.AffectActivity;
+import com.haoxi.shoes.act.GoalActivity;
 import com.haoxi.shoes.act.PersonDetailActivity;
 import com.haoxi.shoes.act.PreventActivity;
+import com.haoxi.shoes.act.SettingActivity;
 import com.haoxi.shoes.act.UpgradeActivity;
 import com.haoxi.shoes.base.BaseLazyFragment;
+import com.haoxi.shoes.model.mine.PersonActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,9 +45,19 @@ public class ProfileFragment extends BaseLazyFragment {
         lazyLoad();
         return view;
     }
+    @OnClick(R.id.profile_goal)
+    public void setProfileGoal(){
+        Intent intent = new Intent(getActivity(), GoalActivity.class);
+        startActivity(intent);
+    }
+    @OnClick(R.id.setting)
+    public void setting(){
+        Intent intent = new Intent(getActivity(), SettingActivity.class);
+        startActivity(intent);
+    }
     @OnClick(R.id.profile_civ)
     public void headCiv(){
-        Intent intent = new Intent(getActivity(), PersonDetailActivity.class);
+        Intent intent = new Intent(getActivity(), PersonActivity.class);
         startActivity(intent);
     }
     @OnClick(R.id.profile_affection)

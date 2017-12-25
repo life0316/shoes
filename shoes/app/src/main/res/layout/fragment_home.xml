@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="13"
+    android:weightSum="15"
     >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5"
+        android:layout_weight="6"
         >
         <include layout="@layout/home_up"/>
     </LinearLayout>
@@ -25,7 +25,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5"
+        android:layout_weight="6"
         android:orientation="vertical"
         >
         <TextView
@@ -51,6 +51,7 @@
             app:titleTextColor="#ff0000"
             android:layout_centerInParent="true"
             app:titleTextSize="12sp"
+            app:bgColor = "@color/view_line"
             />
 
     </LinearLayout>

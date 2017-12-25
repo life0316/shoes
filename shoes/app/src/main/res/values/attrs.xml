@@ -2,12 +2,39 @@
 <resources>
     <attr name="titleText" format="string"/>
     <attr name="titleTextColor" format="color"/>
+    <attr name="bgColor" format="color"/>
     <attr name="titleTextSize" format="dimension"/>
 
     <declare-styleable name="TenHistoryView">
         <attr name="titleText"/>
         <attr name="titleTextColor"/>
+        <attr name="bgColor"/>
         <attr name="titleTextSize"/>
     </declare-styleable>
-    
+
+    <declare-styleable name="HxRoundProgress">
+        <attr name="roundColor" format="color"/>
+        <attr name="roundProgressColor" format="color"/>
+        <attr name="roundWidth" format="dimension"></attr>
+        <attr name="innerRoundColor" format="color" />
+        <attr name="textColor" format="color" />
+        <attr name="textSize" format="dimension" />
+        <attr name="max" format="integer"></attr>
+        <attr name="textIsDisplayable" format="boolean"></attr>
+        <attr name="style">
+            <enum name="STROKE" value="0"></enum>
+            <enum name="FILL" value="1"></enum>
+        </attr>
+    </declare-styleable>
+
+    <!--圆弧进度条-->
+    <declare-styleable name="TasksCompletedView">
+        <attr name="radius" format="dimension"/>
+        <attr name="strokeWidth" format="dimension"/>
+        <attr name="circleColor" format="color"/>
+        <attr name="ringColor" format="color"/>
+        <attr name="ringBgColor" format="color"/>
+    </declare-styleable>
+
+
 </resources>

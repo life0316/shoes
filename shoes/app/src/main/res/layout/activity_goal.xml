@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/custom_toolbar"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="15dp"
+
+        >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="步数目标"
+                android:layout_centerVertical="true"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10000"
+                android:layout_toLeftOf="@+id/step"
+                android:layout_marginRight="20dp"
+                android:textSize="26sp"
+                android:layout_centerVertical="true"
+                android:textColor="@android:color/black"
+                />
+
+            <TextView
+                android:id="@+id/step"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="步"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                />
+        </RelativeLayout>
+
+        <android.support.v7.widget.AppCompatSeekBar
+            android:id="@+id/sport_seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="20000"
+            android:layout_marginTop="20dp"
+            style="@android:style/Widget.Holo.SeekBar"
+            android:progress="10000"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="15dp"
+
+        >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="体重目标"
+                android:layout_centerVertical="true"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="60"
+                android:layout_toLeftOf="@+id/weight"
+                android:layout_marginRight="20dp"
+                android:textSize="26sp"
+                android:layout_centerVertical="true"
+                android:textColor="@android:color/black"
+                />
+
+            <TextView
+                android:id="@+id/weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="公斤"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                />
+        </RelativeLayout>
+
+        <android.support.v7.widget.AppCompatSeekBar
+            android:id="@+id/weight_seekbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="200"
+            android:layout_marginTop="20dp"
+            style="@android:style/Widget.Holo.SeekBar"
+            android:progress="60"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/preserve"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="保存"
+        android:textColor="@color/colorOrange"
+        android:background="@drawable/btn_pigeon_bg"
+        />
+</LinearLayout>

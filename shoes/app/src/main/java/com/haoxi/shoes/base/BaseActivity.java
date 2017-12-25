@@ -53,7 +53,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             if (mToolbarIndicator != -1) {
                 getSupportActionBar().setHomeAsUpIndicator(mToolbarIndicator);
             }else {
-                getSupportActionBar().setHomeAsUpIndicator(R.mipmap.btn_back_normal);
+                //getSupportActionBar().setHomeAsUpIndicator(R.mipmap.btn_back_normal);
             }
         }
     }

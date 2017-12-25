@@ -64,6 +64,9 @@
         <activity android:name=".act.PreventActivity" android:screenOrientation="portrait"/>
         <activity android:name=".act.PersonDetailActivity" android:screenOrientation="portrait"/>
         <activity android:name=".act.EditShoesActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".model.mine.PersonActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".act.GoalActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".act.SettingActivity" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

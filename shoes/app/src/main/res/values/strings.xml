@@ -7,6 +7,7 @@
     <string name="profile_name">我的</string>
 
     <string name="person_detail">个人详情</string>
+    <string name="person_msg">账号信息</string>
     <string name="edit_shoes">编辑</string>
     <string name="family_affection">亲情监护</string>
     <string name="upgrade">固件升级</string>
@@ -14,6 +15,9 @@
     <string name="history_trail">轨迹回放</string>
 
     <string name="target_step">目标步数</string>
+    <string name="target">目标</string>
+    <string name="setting">设置</string>
+    <string name="siger">个人资料</string>
     <string name="step">步</string>
     <string name="quantity_of_heat">热量</string>
     <string name="distance">距离</string>

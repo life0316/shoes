@@ -21,6 +21,8 @@ import com.haoxi.shoes.R;
 import com.haoxi.shoes.adapter.UltraPagerAdapter;
 import com.haoxi.shoes.base.BaseLazyFragment;
 import com.haoxi.shoes.bean.HistoryBean;
+import com.haoxi.shoes.widget.CompletedView;
+import com.haoxi.shoes.widget.HxRoundProgress;
 import com.haoxi.shoes.widget.TenHistroyView;
 import com.tmall.ultraviewpager.UltraViewPager;
 
@@ -38,6 +40,9 @@ public class HomeFragment extends BaseLazyFragment {
 
     @BindView(R.id.tenview)
     TenHistroyView histroyView;
+
+    @BindView(R.id.tasks_view)
+    CompletedView roundProgress;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -52,6 +57,9 @@ public class HomeFragment extends BaseLazyFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        roundProgress.setmTotalProgress(10000);
+
         initUltra(view);
     }
 
@@ -70,6 +78,29 @@ public class HomeFragment extends BaseLazyFragment {
         eachList.add(new HistoryBean(600,"10日"));
 
         histroyView.setEachList(eachList);
+
+//        for (int i = 0; i <= 5100; i++) {
+//            roundProgress.setProgress(i);
+//        }
+
+        new Thread(new ProgressRunable()).start();
+    }
+    private int mTotalProgress = 5100;
+    private int mCurrentProgress = 0;
+
+    class ProgressRunable implements Runnable {
+        @Override
+        public void run() {
+            while (mCurrentProgress < mTotalProgress) {
+                mCurrentProgress += 100;
+                roundProgress.setProgress(mCurrentProgress);
+                try {
+                    Thread.sleep(30);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     @Override
