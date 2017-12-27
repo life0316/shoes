@@ -33,5 +33,9 @@
     <string name="shoes_imei">设备编号</string>
     <string name="input_shoes_imei">请输入设备IMEI ( 15位 )</string>
     <string name="add_shoes">添加设备</string>
+    <string name="previous">Go to previous</string>
+    <string name="next">Go to next</string>
+    <string name="calendar">Calendar</string>
+
 
 </resources>

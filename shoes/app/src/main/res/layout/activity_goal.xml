@@ -27,6 +27,7 @@
                 android:layout_centerVertical="true"
                 />
             <TextView
+                android:id="@+id/goalStep"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="10000"
@@ -80,6 +81,7 @@
                 android:layout_centerVertical="true"
                 />
             <TextView
+                android:id="@+id/goalWeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="60"

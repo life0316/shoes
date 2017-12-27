@@ -1,58 +1,55 @@
 package com.haoxi.shoes.act;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.NonNull;
 import android.util.Log;
-import android.view.View;
 
 import com.haoxi.shoes.R;
-import com.othershe.calendarview.bean.DateBean;
-import com.othershe.calendarview.listener.OnPagerChangeListener;
-import com.othershe.calendarview.listener.OnSingleChooseListener;
-import com.othershe.calendarview.weiget.CalendarView;
-import com.othershe.calendarview.weiget.WeekView;
+import com.haoxi.shoes.base.BaseActivity;
+import com.haoxi.shoes.utils.ActivityFragmentInject;
+import com.haoxi.shoes.widget.materialcalendarview.CalendarDay;
+import com.haoxi.shoes.widget.materialcalendarview.MaterialCalendarView;
+import com.haoxi.shoes.widget.materialcalendarview.OnDateSelectedListener;
+
+import java.util.Calendar;
+import java.util.Date;
+
+import butterknife.BindView;
 
 
-public class TrackActivity extends AppCompatActivity {
+@ActivityFragmentInject(contentViewId = R.layout.activity_track,menuId = 1,toolbarTitle = R.string.history_trail)
+public class TrackActivity extends BaseActivity {
 
     private static final String TAG = "TrackActivity";
+    private CalendarDay calendarDay;
 
-    private WeekView weekView;
-    private CalendarView calendarView;
+    @BindView(R.id.mcv)
+    MaterialCalendarView mcv;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_track);
+    protected void init() {
+        mcv.setActivity(this);
 
-        initView();
-    }
+        mcv.state().edit()
+                .setMinimumDate(CalendarDay.from(2017,0,1))
+                .setMaximumDate(Calendar.getInstance())
+                .commit();
 
-    private void initView() {
+        mcv.setSelectedDate(new Date());
 
-        weekView = findViewById(R.id.weekView);
-        calendarView = findViewById(R.id.calendar);
-        //日历init
-        calendarView
-                .setStartEndDate("2010.7", "2018.12")
-                .setInitDate("2017.12")
-                .setSingleDate("2017.12.18")
-                .init();
-
-    //月份切换回调
-        calendarView.setOnPagerChangeListener(new OnPagerChangeListener() {
+        mcv.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
-            public void onPagerChanged(int[] date) {
-                Log.e(TAG,date[0]+"---"+date[1]+"---"+date[2]+"-------m");
-                calendarView.setSingleDate("");
+            public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
+                Log.e("adfadfeeeeee",date.getYear()+"===="+date.getMonth()+"==="+date.getDay());
+                TrackActivity.this.calendarDay = calendarDay;
             }
         });
 
-        calendarView.setOnSingleChooseListener(new OnSingleChooseListener() {
+        mcv.setAddSelectedListener(new MaterialCalendarView.OnAddSelectedListener() {
             @Override
-            public void onSingleChoose(View view, DateBean dateBean) {
-                Log.e(TAG,dateBean.getSolar()[0]+"---"+dateBean.getSolar()[1]+"---"+dateBean.getSolar()[2]);
+            public void addSelected(MaterialCalendarView view, CalendarDay calendarDay) {
+                if (calendarDay != null) {
+                    Log.e("adfadfeeeeee",calendarDay.getYear()+"==1=="+calendarDay.getMonth()+"==1=="+calendarDay.getDay());
+                }
             }
         });
     }

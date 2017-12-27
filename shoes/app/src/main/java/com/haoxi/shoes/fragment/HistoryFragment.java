@@ -1,6 +1,7 @@
 package com.haoxi.shoes.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.haoxi.shoes.R;
+import com.haoxi.shoes.act.TrackActivity;
 import com.haoxi.shoes.base.BaseLazyFragment;
 import com.tencent.map.geolocation.TencentLocation;
 import com.tencent.map.geolocation.TencentLocationListener;
@@ -20,9 +22,16 @@ import com.tencent.tencentmap.mapsdk.maps.MapView;
 import com.tencent.tencentmap.mapsdk.maps.TencentMap;
 import com.tencent.tencentmap.mapsdk.maps.UiSettings;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class HistoryFragment extends BaseLazyFragment {
 
-    private MapView mMapView;
+    @BindView(R.id.map)
+    MapView mMapView;
+
+
     private TencentMap tencentMap;
     private UiSettings uiSettings;
     private DemoLocationSource locationSource;
@@ -35,6 +44,7 @@ public class HistoryFragment extends BaseLazyFragment {
 
         Log.e("jiazai","预加载----HistoryFragment");
         View view = inflater.inflate(R.layout.fragment_history, container, false);
+        ButterKnife.bind(this,view);
         isPrepared = true;
         lazyLoad();
         return view;
@@ -43,7 +53,7 @@ public class HistoryFragment extends BaseLazyFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mMapView = view.findViewById(R.id.map);
+        //mMapView = view.findViewById(R.id.map);
         mMapView.setOnTop(false);
         tencentMap = mMapView.getMap();
         initMap();
@@ -58,6 +68,12 @@ public class HistoryFragment extends BaseLazyFragment {
         locationSource = new DemoLocationSource(getActivity());
         tencentMap.setLocationSource(locationSource);
         tencentMap.setMyLocationEnabled(true);
+    }
+
+    @OnClick(R.id.add_track)
+    void addTrack(){
+        Intent intent = new Intent(getActivity(), TrackActivity.class);
+        startActivity(intent);
     }
 
     @Override
