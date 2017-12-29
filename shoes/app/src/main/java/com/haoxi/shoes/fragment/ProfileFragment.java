@@ -37,7 +37,6 @@ public class ProfileFragment extends BaseLazyFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        Log.e("jiazai","预加载----ProfileFragment");
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         ButterKnife.bind(this,view);
         //XXX初始化view的各控件
@@ -48,6 +47,11 @@ public class ProfileFragment extends BaseLazyFragment {
     @OnClick(R.id.profile_goal)
     public void setProfileGoal(){
         Intent intent = new Intent(getActivity(), GoalActivity.class);
+        startActivity(intent);
+    }
+    @OnClick(R.id.profile_detail)
+    public void setProfileDetail(){
+        Intent intent = new Intent(getActivity(), PersonDetailActivity.class);
         startActivity(intent);
     }
     @OnClick(R.id.setting)

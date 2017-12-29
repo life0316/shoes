@@ -13,7 +13,6 @@
         android:orientation="vertical"
         android:gravity="center"
         >
-
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -26,7 +25,6 @@
             android:text="@string/target"
             android:layout_marginTop="5dp"
             />
-
     </LinearLayout>
 
     <View
@@ -35,13 +33,13 @@
         android:background="@color/view_dray"/>
 
     <LinearLayout
+        android:id="@+id/profile_detail"
         android:layout_width="0dp"
         android:layout_height="100dp"
         android:layout_weight="1"
         android:orientation="vertical"
         android:gravity="center"
         >
-
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
