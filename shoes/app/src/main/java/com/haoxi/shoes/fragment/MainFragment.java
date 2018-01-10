@@ -13,7 +13,7 @@ public class MainFragment extends MyBaseFragment {
         adapter.addFragment(HomeFragment.class,getString(R.string.home_name),getBundle(getString(R.string.home_name)));
         adapter.addFragment(HistoryFragment.class,getString(R.string.history_name),getBundle(getString(R.string.history_name)));
         adapter.addFragment(BindFragment.class,getString(R.string.bind_name),getBundle(getString(R.string.bind_name)));
-        adapter.addFragment(ProfileFragment.class,getString(R.string.profile_name),getBundle(getString(R.string.profile_name)));
+        adapter.addFragment(ProfileFragment2.class,getString(R.string.profile_name),getBundle(getString(R.string.profile_name)));
     }
 
     public static MainFragment newInstance(String content){

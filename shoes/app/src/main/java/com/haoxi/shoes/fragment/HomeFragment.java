@@ -15,23 +15,30 @@ import android.widget.ImageView;
 
 import com.blankj.utilcode.util.AppUtils;
 import com.blankj.utilcode.util.ImageUtils;
-import com.blankj.utilcode.util.SPUtils;
-import com.blankj.utilcode.util.Utils;
 import com.haoxi.shoes.R;
 import com.haoxi.shoes.adapter.UltraPagerAdapter;
 import com.haoxi.shoes.base.BaseLazyFragment;
 import com.haoxi.shoes.bean.HistoryBean;
+import com.haoxi.shoes.retrofit.RetrofitManager;
+import com.haoxi.shoes.retrofit.TxAnswer;
+import com.haoxi.shoes.retrofit.TxUtils;
 import com.haoxi.shoes.widget.CompletedView;
-import com.haoxi.shoes.widget.HxRoundProgress;
 import com.haoxi.shoes.widget.TenHistroyView;
 import com.tmall.ultraviewpager.UltraViewPager;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Predicate;
+import io.reactivex.schedulers.Schedulers;
 
 public class HomeFragment extends BaseLazyFragment {
     // 标志位，标志已经初始化完成。
@@ -61,6 +68,7 @@ public class HomeFragment extends BaseLazyFragment {
         roundProgress.setmTotalProgress(10000);
 
         initUltra(view);
+
     }
 
     @OnClick(R.id.add_goal)
@@ -79,11 +87,10 @@ public class HomeFragment extends BaseLazyFragment {
 
         histroyView.setEachList(eachList);
 
-//        for (int i = 0; i <= 5100; i++) {
-//            roundProgress.setProgress(i);
-//        }
-
         new Thread(new ProgressRunable()).start();
+
+        getTxAnswer("今天在学校被打了");
+
     }
     private int mTotalProgress = 5100;
     private int mCurrentProgress = 0;
@@ -129,7 +136,6 @@ public class HomeFragment extends BaseLazyFragment {
         for(int i = 0; i < imageLists.size(); i++){
             ImageView imageView = new ImageView(getActivity());
             Bitmap bitmap = ImageUtils.getBitmap(imageLists.get(i));
-            //Bitmap bitmap1 = ImageUtils.addTextWatermark(bitmap,"飞哥",13,getResources().getColor(R.color.colorAccent),0,0);
             imageView.setImageBitmap(bitmap);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
             images.add(imageView);
@@ -151,5 +157,55 @@ public class HomeFragment extends BaseLazyFragment {
         ultraViewPager.setInfiniteLoop(true);
 
         ultraViewPager.setAutoScroll(3000);
+    }
+    protected RetrofitManager.IOurNewService ourNewService;
+    private void getTxAnswer(String text){
+
+        String APP_ID = "1106552241";
+        String APP_KEY = "BK9O2o1lEudlc2ej";
+        String time_stamp =  System.currentTimeMillis()/1000+"";
+        String nonce_str = TxUtils.getRandomString(10);
+        String session = "10000";
+        String question = text;
+
+        try {
+            question = java.net.URLEncoder.encode(text,"utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        String sign = TxUtils.convertString((TxUtils.MD5("app_id=" + APP_ID
+                +"&nonce_str="+nonce_str
+                +"&question="+ question
+                + "&session=" + session
+                +"&time_stamp="+ time_stamp
+                +  "&app_key=" + APP_KEY)));
+
+        Map<String,String> map = new HashMap<>();
+        map.put("app_id",APP_ID);
+        map.put("nonce_str",nonce_str);
+        map.put("question",question);
+        map.put("session",session);
+        map.put("time_stamp",time_stamp);
+        map.put("sign",sign);
+
+        Log.e("txurl-----",map.toString());
+        ourNewService = RetrofitManager.builder().getOurNewService();
+        ourNewService.getTxAnswer(APP_ID,sign,session,question,nonce_str,time_stamp)
+                .subscribeOn(Schedulers.newThread())
+                .filter(new Predicate<TxAnswer>() {
+                    @Override
+                    public boolean test(TxAnswer txAnswer) throws Exception {
+                        return txAnswer.getRet() == 0 && txAnswer.getData() != null;
+                    }
+                })
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<TxAnswer>() {
+                    @Override
+                    public void accept(TxAnswer txAnswer) throws Exception {
+                        if (txAnswer.getData().getAnswer() != null){
+                            Log.e("txurl-----",txAnswer.getMsg()+"---------"+txAnswer.getData().getAnswer());
+                        }
+                    }
+                });
     }
 }

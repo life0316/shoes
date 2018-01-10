@@ -9,8 +9,8 @@
         android:id="@+id/fragment_base_tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabIndicatorColor="@android:color/holo_red_dark"
-        app:tabSelectedTextColor="@android:color/holo_red_dark"
+        app:tabIndicatorColor="@color/colorPrimary"
+        app:tabSelectedTextColor="@color/colorPrimary"
         app:tabTextAppearance="@style/TabLayoutTextStyle"
         android:background="@android:color/white"
         />

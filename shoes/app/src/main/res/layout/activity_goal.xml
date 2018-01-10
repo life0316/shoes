@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    >
 
     <include layout="@layout/custom_toolbar"/>
 
@@ -9,15 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_margin="15dp"
-
+        android:layout_margin="@dimen/x20"
         >
-
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-
+            android:layout_margin="@dimen/x15"
             >
 
             <TextView
@@ -32,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:text="10000"
                 android:layout_toLeftOf="@+id/step"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="@dimen/x30"
                 android:textSize="26sp"
                 android:layout_centerVertical="true"
                 android:textColor="@android:color/black"
@@ -53,7 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:max="20000"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/x20"
             style="@android:style/Widget.Holo.SeekBar"
             android:progress="10000"
             />
@@ -63,15 +62,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_margin="15dp"
-
+        android:layout_marginRight="@dimen/x20"
+        android:layout_marginLeft="@dimen/x20"
+        android:layout_marginTop="@dimen/x20"
+        android:layout_marginBottom="@dimen/x60"
         >
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-
+            android:layout_margin="@dimen/x15"
             >
 
             <TextView
@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:text="60"
                 android:layout_toLeftOf="@+id/weight"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="@dimen/x30"
                 android:textSize="26sp"
                 android:layout_centerVertical="true"
                 android:textColor="@android:color/black"
@@ -107,17 +107,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:max="200"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/x15"
             style="@android:style/Widget.Holo.SeekBar"
             android:progress="60"
             />
     </LinearLayout>
 
+    <include layout="@layout/goal_item"
+        />
+
     <Button
         android:id="@+id/preserve"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginTop="@dimen/x80"
+        android:layout_marginRight="@dimen/x40"
+        android:layout_marginLeft="@dimen/x40"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="保存"

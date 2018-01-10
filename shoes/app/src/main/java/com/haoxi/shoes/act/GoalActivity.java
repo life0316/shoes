@@ -32,6 +32,7 @@ public class GoalActivity extends BaseActivity implements SeekBar.OnSeekBarChang
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+
         if (seekBar == sportSeekbar){
             stepTv.setText(i+"");
         }else if (seekBar == weightSeekbar){

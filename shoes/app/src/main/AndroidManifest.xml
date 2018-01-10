@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.haoxi.shoes">
 
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
@@ -24,8 +27,6 @@
     <!-- 访问WiFi状态，需要WiFi信息用于网络定位 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
-
-
     <application
         android:name=".base.ShoesApp"
         android:allowBackup="true"
@@ -35,7 +36,6 @@
         android:theme="@style/AppTheme"
         tools:replace="android:icon, android:label,android:theme"
         >
-
         <meta-data
             android:name="TencentMapSDK"
             android:value="7NBBZ-K7WWO-N7CW2-SBEQ5-WFB2F-EQFGT"/>
@@ -43,7 +43,6 @@
         <activity android:name=".act.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -58,6 +57,13 @@
         <activity android:name=".model.mine.PersonActivity" android:screenOrientation="portrait"/>
         <activity android:name=".act.GoalActivity" android:screenOrientation="portrait"/>
         <activity android:name=".act.SettingActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".act.AboutActivity" android:screenOrientation="portrait"/>
+
+        <activity android:name=".bluetooth.MainActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".bluetooth.LockManageActivity" android:screenOrientation="portrait"/>
+        <service
+            android:name=".bluetooth.BluetoothLeService"
+            android:enabled="true" />
     </application>
 
 </manifest>
